@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import '../../../../core/widgets/app_button.dart';
 
 class DatesWidget extends StatefulWidget {
@@ -22,20 +21,34 @@ class _DatesWidgetState extends State<DatesWidget> {
   }
 
   Future<void> _selectDate(
-    BuildContext context,
-    TextEditingController controller,
-  ) async {
-    DateTime? picked = await showDatePicker(
+      BuildContext context, TextEditingController controller) async {
+    final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime.now(),
     );
+
     if (picked != null) {
+      final formattedDate = DateFormat('yyyy-MM-dd').format(picked);
       setState(() {
-        controller.text = DateFormat('yyyy-MM-dd').format(picked);
+        controller.text = formattedDate;
       });
     }
+  }
+
+  Widget _buildDateButton({
+    required String placeholder,
+    required VoidCallback onPressed,
+    required String controllerText,
+  }) {
+    return Expanded(
+      child: AppButton(
+        placeHolderText: placeholder,
+        onPressed: onPressed,
+        text: controllerText.isEmpty ? null : '$placeholder: $controllerText',
+      ),
+    );
   }
 
   @override
@@ -44,30 +57,16 @@ class _DatesWidgetState extends State<DatesWidget> {
       width: double.infinity,
       child: Row(
         children: [
-          // Start date
-          Expanded(
-            child: AppButton(
-              placeHolderText: 'Start Date',
-              onPressed: () {
-                _selectDate(context, _startDateController);
-              },
-              text: _startDateController.text.isEmpty
-                  ? null
-                  : 'Start: ${_startDateController.text}',
-            ),
+          _buildDateButton(
+            placeholder: 'Start Date',
+            onPressed: () => _selectDate(context, _startDateController),
+            controllerText: _startDateController.text,
           ),
           const SizedBox(width: 8),
-          // End date
-          Expanded(
-            child: AppButton(
-              placeHolderText: 'End Date',
-              onPressed: () {
-                _selectDate(context, _endDateController);
-              },
-              text: _endDateController.text.isEmpty
-                  ? null
-                  : 'End: ${_endDateController.text}',
-            ),
+          _buildDateButton(
+            placeholder: 'End Date',
+            onPressed: () => _selectDate(context, _endDateController),
+            controllerText: _endDateController.text,
           ),
         ],
       ),

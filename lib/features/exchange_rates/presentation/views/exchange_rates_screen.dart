@@ -5,54 +5,59 @@ import '../widgets/exchange_rates_table.dart';
 import '../widgets/next_and_previous_buttons.dart';
 import '../widgets/submit_button.dart';
 
-class ExchangeRatesScreen extends StatefulWidget {
+class ExchangeRatesScreen extends StatelessWidget {
   const ExchangeRatesScreen({super.key});
 
-  @override
-  State<ExchangeRatesScreen> createState() => _ExchangeRatesScreenState();
-}
-
-class _ExchangeRatesScreenState extends State<ExchangeRatesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-        child: SafeArea(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
           child: ListView(
-            children: [
-              const SizedBox(height: 20),
-              SizedBox(
-                height: 100,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Column(
-                        children: [
-                          DatesWidget(),
-                          const SizedBox(height: 8),
-                          CurrenciesSelectorsWidget(),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      flex: 1,
-                      child: SubmitButton(),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
+            children: const [
+              _TopControlsSection(),
+              SizedBox(height: 20),
               ExchangeRatesTable(),
-              const SizedBox(height: 50),
+              SizedBox(height: 32),
               NextAndPreviousButtons(),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _TopControlsSection extends StatelessWidget {
+  const _TopControlsSection();
+
+  @override
+  Widget build(BuildContext context) {
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            flex: 3,
+            child: Column(
+              children: const [
+                DatesWidget(),
+                SizedBox(height: 8),
+                CurrenciesSelectorsWidget(),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            flex: 1,
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: SubmitButton(),
+            ),
+          ),
+        ],
       ),
     );
   }
