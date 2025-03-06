@@ -1,0 +1,52 @@
+name: swypex_task
+description: "A new Flutter project."
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  #State management
+  flutter_bloc: ^9.1.0
+  #A Dart package that helps to implement value based equality without needing to explicitly override == and hashCode.
+  equatable: ^2.0.7
+  #Simple direct Service Locator
+  get_it: ^8.0.3
+  #A powerful HTTP networking package
+  dio: ^5.8.0+1
+  #Pretty Dio logger is a Dio interceptor that logs network calls in a pretty, easy to read format.
+  pretty_dio_logger: ^1.4.0
+  #Functional Programming in Dart.
+  dartz: ^0.10.1
+  #Easily configure any flutter application with global variables using a `.env` file.
+  flutter_dotenv: ^5.2.1
+  #Classes and helper functions that support JSON code generation via the `json_serializable` package.
+  json_annotation: ^4.9.0
+  #Contains code to deal with internationalized/localized messages, date and number formatting and parsing,
+  intl: ^0.20.2
+
+
+
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  #A build system for Dart code generation and modular compilation.
+  build_runner: ^2.4.15
+  #Automatically generate code for converting to and from JSON by annotating Dart classes.
+  json_serializable: ^6.9.4
+
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - .env
+
