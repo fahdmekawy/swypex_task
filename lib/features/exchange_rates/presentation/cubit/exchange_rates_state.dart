@@ -8,10 +8,13 @@ abstract class ExchangeRatesState extends Equatable {
   List<Object?> get props => [];
 }
 
+/// Represents the initial state of exchange rates.
 class ExchangeRatesInitial extends ExchangeRatesState {}
 
+/// Represents the loading state while fetching exchange rates.
 class ExchangeRatesLoading extends ExchangeRatesState {}
 
+/// Represents the successfully loaded exchange rates state.
 class ExchangeRatesLoaded extends ExchangeRatesState {
   final ExchangeRatesEntity exchangeRates;
 
@@ -21,6 +24,7 @@ class ExchangeRatesLoaded extends ExchangeRatesState {
   List<Object?> get props => [exchangeRates];
 }
 
+/// Represents an error state when fetching exchange rates fails.
 class ExchangeRatesError extends ExchangeRatesState {
   final String message;
 

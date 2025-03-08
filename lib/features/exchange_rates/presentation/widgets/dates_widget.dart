@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:swypex_task/features/exchange_rates/presentation/cubit/exchange_rates_cubit.dart';
 import '../../../../core/widgets/app_button.dart';
 
 class DatesWidget extends StatefulWidget {
@@ -10,16 +12,6 @@ class DatesWidget extends StatefulWidget {
 }
 
 class _DatesWidgetState extends State<DatesWidget> {
-  final TextEditingController _startDateController = TextEditingController();
-  final TextEditingController _endDateController = TextEditingController();
-
-  @override
-  void dispose() {
-    _startDateController.dispose();
-    _endDateController.dispose();
-    super.dispose();
-  }
-
   Future<void> _selectDate(
       BuildContext context, TextEditingController controller) async {
     final DateTime? picked = await showDatePicker(
@@ -44,7 +36,7 @@ class _DatesWidgetState extends State<DatesWidget> {
   }) {
     return Expanded(
       child: AppButton(
-        placeHolderText: placeholder,
+        placeholderText: placeholder,
         onPressed: onPressed,
         text: controllerText.isEmpty ? null : '$placeholder: $controllerText',
       ),
@@ -59,14 +51,22 @@ class _DatesWidgetState extends State<DatesWidget> {
         children: [
           _buildDateButton(
             placeholder: 'Start Date',
-            onPressed: () => _selectDate(context, _startDateController),
-            controllerText: _startDateController.text,
+            onPressed: () => _selectDate(
+              context,
+              context.read<ExchangeRatesCubit>().startDateController,
+            ),
+            controllerText:
+                context.read<ExchangeRatesCubit>().startDateController.text,
           ),
           const SizedBox(width: 8),
           _buildDateButton(
             placeholder: 'End Date',
-            onPressed: () => _selectDate(context, _endDateController),
-            controllerText: _endDateController.text,
+            onPressed: () => _selectDate(
+              context,
+              context.read<ExchangeRatesCubit>().endDateController,
+            ),
+            controllerText:
+                context.read<ExchangeRatesCubit>().endDateController.text,
           ),
         ],
       ),

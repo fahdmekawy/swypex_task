@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class AppButton extends StatelessWidget {
   final String? text;
-  final String placeHolderText;
-  final Function()? onPressed;
+  final String placeholderText;
+  final VoidCallback? onPressed;
 
   const AppButton({
     super.key,
     this.text,
-    required this.placeHolderText,
+    required this.placeholderText,
     this.onPressed,
   });
 
@@ -26,13 +26,10 @@ class AppButton extends StatelessWidget {
           side: const BorderSide(color: Colors.black, width: 2),
         ),
       ),
-      child: FittedBox(
-        child: SizedBox(
-          child: Text(
-            text ?? placeHolderText,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        ),
+      child: Text(
+        text ?? placeholderText,
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        textAlign: TextAlign.center,
       ),
     );
   }

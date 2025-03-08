@@ -8,22 +8,16 @@ part of 'exchange_rates_model.dart';
 
 ExchangeRatesModel _$ExchangeRatesModelFromJson(Map<String, dynamic> json) =>
     ExchangeRatesModel(
-      startDate: json['startDate'] as String,
-      endDate: json['endDate'] as String,
+      startDate: json['start_date'] as String,
+      endDate: json['end_date'] as String,
       source: json['source'] as String,
-      quotes: (json['quotes'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry(
-            k,
-            (e as Map<String, dynamic>).map(
-              (k, e) => MapEntry(k, (e as num).toDouble()),
-            )),
-      ),
+      quotes: json['quotes'] as Map<String, dynamic>,
     );
 
 Map<String, dynamic> _$ExchangeRatesModelToJson(ExchangeRatesModel instance) =>
     <String, dynamic>{
-      'startDate': instance.startDate,
-      'endDate': instance.endDate,
+      'start_date': instance.startDate,
+      'end_date': instance.endDate,
       'source': instance.source,
       'quotes': instance.quotes,
     };

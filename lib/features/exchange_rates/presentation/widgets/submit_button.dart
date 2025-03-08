@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:swypex_task/core/theming/text_styles.dart';
+import 'package:swypex_task/features/exchange_rates/presentation/cubit/exchange_rates_cubit.dart';
 
 class SubmitButton extends StatelessWidget {
   const SubmitButton({super.key});
@@ -13,14 +16,11 @@ class SubmitButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
       ),
       child: InkWell(
-        onTap: () {},
-        child: const Center(
+        onTap: () => context.read<ExchangeRatesCubit>().fetchExchangeRates(),
+        child: Center(
           child: Text(
             'Submit',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+            style: AppTextStyles.boldBlack18,
           ),
         ),
       ),

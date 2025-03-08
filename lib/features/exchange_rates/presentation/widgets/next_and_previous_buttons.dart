@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:swypex_task/core/widgets/app_button.dart';
 
 class NextAndPreviousButtons extends StatelessWidget {
-  const NextAndPreviousButtons({super.key});
+  final Function() onNext;
+  final Function() onPrevious;
+
+  const NextAndPreviousButtons({
+    super.key,
+    required this.onNext,
+    required this.onPrevious,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -10,15 +17,15 @@ class NextAndPreviousButtons extends StatelessWidget {
       children: [
         Expanded(
           child: AppButton(
-            placeHolderText: '<',
-            onPressed: () {},
+            placeholderText: '<',
+            onPressed: onPrevious,
           ),
         ),
         const SizedBox(width: 10),
         Expanded(
           child: AppButton(
-            placeHolderText: '>',
-            onPressed: () {},
+            placeholderText: '>',
+            onPressed: onNext,
           ),
         ),
       ],

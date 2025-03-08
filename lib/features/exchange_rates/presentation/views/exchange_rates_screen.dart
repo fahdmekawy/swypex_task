@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:swypex_task/features/exchange_rates/presentation/widgets/currencies_selectors_widget.dart';
 import 'package:swypex_task/features/exchange_rates/presentation/widgets/dates_widget.dart';
+
 import '../widgets/exchange_rates_table.dart';
-import '../widgets/next_and_previous_buttons.dart';
 import '../widgets/submit_button.dart';
 
 class ExchangeRatesScreen extends StatelessWidget {
@@ -17,11 +17,12 @@ class ExchangeRatesScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
           child: ListView(
             children: const [
+              /// This container contains Dates selection, Currencies selection and Submit button
               _TopControlsSection(),
               SizedBox(height: 20),
+
+              /// This container contains the exchange rates table, Error message and Loading indicator
               ExchangeRatesTable(),
-              SizedBox(height: 32),
-              NextAndPreviousButtons(),
             ],
           ),
         ),

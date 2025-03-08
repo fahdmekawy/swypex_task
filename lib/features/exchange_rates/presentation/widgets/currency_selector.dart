@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:swypex_task/core/theming/text_styles.dart';
 
 class CurrencySelector extends StatefulWidget {
-  const CurrencySelector({super.key});
+  final String? placeHolder;
+  final String selectedCurrency;
+  final ValueChanged<String> onCurrencyChanged;
+
+  const CurrencySelector({
+    super.key,
+    this.placeHolder,
+    required this.selectedCurrency,
+    required this.onCurrencyChanged,
+  });
 
   @override
   State<CurrencySelector> createState() => _CurrencySelectorState();
 }
 
 class _CurrencySelectorState extends State<CurrencySelector> {
-  String? _selectedCurrency;
-  final List<String> _currencies = ['USD', 'EUR', 'GBP', 'JPY'];
+  List<String> currencies = ['USD', 'EUR', 'EGP'];
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +30,11 @@ class _CurrencySelectorState extends State<CurrencySelector> {
   }
 
   void _handleCurrencySelected(String value) {
-    setState(() {
-      _selectedCurrency = value;
-    });
+    widget.onCurrencyChanged(value);
   }
 
   List<PopupMenuEntry<String>> _buildCurrencyMenuItems(BuildContext context) {
-    return _currencies.map((String currency) {
+    return currencies.map((String currency) {
       return PopupMenuItem(
         value: currency,
         child: Text(currency),
@@ -53,14 +60,10 @@ class _CurrencySelectorState extends State<CurrencySelector> {
       child: Center(
         child: FittedBox(
           child: Text(
-            _selectedCurrency == null
-                ? 'From Currency'
-                : 'From $_selectedCurrency',
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
+            widget.selectedCurrency.isEmpty
+                ? '${widget.placeHolder} Currency'
+                : '${widget.placeHolder} ${widget.selectedCurrency}',
+            style: AppTextStyles.boldBlack16,
           ),
         ),
       ),
