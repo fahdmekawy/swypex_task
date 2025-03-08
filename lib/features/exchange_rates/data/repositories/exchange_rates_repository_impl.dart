@@ -37,7 +37,12 @@ class ExchangeRatesRepositoryImpl implements ExchangeRatesRepository {
       return Right(entity);
     } on ApiException catch (e) {
       /// If an API exception occurs, return a `Left` containing an `ApiFailure`.
-      return Left(ApiFailure(statusCode: e.statusCode, message: e.message));
+      return Left(
+        ApiFailure(
+          statusCode: e.statusCode,
+          message: e.message,
+        ),
+      );
     }
   }
 }

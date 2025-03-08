@@ -36,7 +36,7 @@ class ExchangeRatesRemoteDataSourceImpl
         },
       );
 
-      // Check if the response is successful
+      /// Check if the response is successful
       if (response.statusCode == 200 && response.data['success'] == true) {
         return ExchangeRatesModel.fromJson(response.data);
       } else {

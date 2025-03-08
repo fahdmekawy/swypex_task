@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import '../../../../core/helpers/typedef.dart';
 
-/// Represents the exchange rates data model used in the application.
+/// Represents the exchange rates data model
 class ExchangeRatesEntity extends Equatable {
   final String startDate;
   final String endDate;
@@ -14,8 +14,6 @@ class ExchangeRatesEntity extends Equatable {
     required this.source,
     required this.quotes,
   });
-
-
 
   @override
   List<Object?> get props => [startDate, endDate, source, quotes];

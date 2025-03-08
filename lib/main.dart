@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'core/di/dependency_injection.dart';
+import 'core/di/di_container.dart';
 import 'features/exchange_rates/presentation/cubit/exchange_rates_cubit.dart';
 import 'features/exchange_rates/presentation/views/exchange_rates_screen.dart';
 

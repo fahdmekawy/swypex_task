@@ -18,7 +18,7 @@ class CurrencySelector extends StatefulWidget {
 }
 
 class _CurrencySelectorState extends State<CurrencySelector> {
-  List<String> currencies = ['USD', 'EUR', 'EGP'];
+  List<String> currencies = ['USD', 'EGP'];
 
   @override
   Widget build(BuildContext context) {

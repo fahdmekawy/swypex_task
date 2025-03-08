@@ -47,7 +47,6 @@ void main() {
     test(
         'Should return exchange rates when remote data source call is successful',
         () async {
-      // ✅ Fix: Return ExchangeRatesModel instead of ExchangeRatesEntity
       when(mockRemoteDataSource.getExchangeRates(
         startDate: anyNamed('startDate'),
         endDate: anyNamed('endDate'),

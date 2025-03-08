@@ -76,7 +76,11 @@ class _ExchangeRatesTableState extends State<ExchangeRatesTable> {
             style: AppTextStyles.boldRed20,
           );
         } else if (state is ExchangeRatesLoading) {
-          return AppLoader();
+          return Column(
+            children: [
+              AppLoader(),
+            ],
+          );
         } else {
           return Text(
             'Please Select Your Dates and Currency to show you the details',

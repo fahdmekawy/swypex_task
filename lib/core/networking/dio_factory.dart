@@ -11,7 +11,9 @@ class DioFactory {
       baseUrl: dotenv.env['SERVER']!,
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
-      queryParameters: {'access_key': dotenv.env['API_ACCESS_KEY']},
+      queryParameters: {
+        'access_key': dotenv.env['API_ACCESS_KEY'],
+      },
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
